@@ -17,19 +17,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tlbPokemonsList"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="@string/app_name" />
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tlbPokemonsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="@string/app_name" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPokemonsList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:clickListener="@{viewModel.clickListener}"
+            app:bindListener="@{viewModel.clickListener}"
+            app:bindPokemons="@{viewModel.pokemons}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:pokemons="@{viewModel.pokemons}"
             tools:listitem="@layout/item_pokemons_list" />
 
     </LinearLayout>

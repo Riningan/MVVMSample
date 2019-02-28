@@ -27,8 +27,7 @@ class PokemonsListFragment : Fragment() {
         val binding =
             DataBindingUtil.inflate<FragmentPokemonsListBinding>(inflater, com.riningan.mvvmsample.R.layout.fragment_pokemons_list, container, false)
         binding.setLifecycleOwner(this)
-        val view = binding.root
         binding.viewModel = ViewModelProviders.of(this, viewModelFactory)[PokemonsListViewModel::class.java]
-        return view
+        return binding.root
     }
 }

@@ -1,9 +1,8 @@
 package com.riningan.mvvmsample.data.repository
 
-import androidx.lifecycle.LiveData
 import com.riningan.mvvmsample.data.model.PokemonResponse
 
 
 interface PokemonRepository {
-    fun getPokemon(): LiveData<List<PokemonResponse>>
+    suspend fun getPokemon(offset: Int, limit: Int): List<PokemonResponse>
 }

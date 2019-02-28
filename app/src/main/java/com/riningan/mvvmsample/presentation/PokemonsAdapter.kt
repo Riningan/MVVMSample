@@ -2,20 +2,20 @@ package com.riningan.mvvmsample.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.paging.PagedList
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.riningan.mvvmsample.R
 import com.riningan.mvvmsample.data.model.PokemonResponse
 import com.riningan.mvvmsample.databinding.ItemPokemonsListBinding
+import com.squareup.picasso.Picasso
 
 
-class PokemonsAdapter(private val mListener: ItemClickListener) : RecyclerView.Adapter<PokemonsAdapter.ViewHolder>() {
-    private val mPokemons = mutableListOf<PokemonResponse>()
-
-
-    override fun getItemCount() = mPokemons.size
-
+class PokemonsAdapter(private val mListener: ItemClickListener, pokemonsDiffUtilCallback: PokemonsDiffUtilCallback) :
+    PagedListAdapter<PokemonResponse, PokemonsAdapter.ViewHolder>(pokemonsDiffUtilCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = DataBindingUtil.inflate<ItemPokemonsListBinding>(
             LayoutInflater.from(parent.context),
@@ -28,12 +28,12 @@ class PokemonsAdapter(private val mListener: ItemClickListener) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.pokemon = mPokemons[position]
+        holder.binding.pokemon = getItem(position)
     }
 
 
     interface ItemClickListener {
-        fun onClick(pokemonModel: PokemonResponse)
+        fun onClick(pokemonResponse: PokemonResponse)
     }
 
 
@@ -42,19 +42,21 @@ class PokemonsAdapter(private val mListener: ItemClickListener) : RecyclerView.A
 
     companion object {
         @JvmStatic
-        @BindingAdapter("pokemons")
-        fun RecyclerView.bindItems(pokemons: List<PokemonResponse>) {
-            (adapter as PokemonsAdapter).apply {
-                mPokemons.clear()
-                mPokemons.addAll(pokemons)
-                notifyDataSetChanged()
-            }
+        @BindingAdapter("bindListener")
+        fun RecyclerView.bindListener(clickListener: ItemClickListener) {
+            adapter = PokemonsAdapter(clickListener, PokemonsDiffUtilCallback())
         }
 
         @JvmStatic
-        @BindingAdapter("clickListener")
-        fun bindListAdapter(recyclerView: RecyclerView, clickListener: ItemClickListener) {
-            recyclerView.adapter = PokemonsAdapter(clickListener)
+        @BindingAdapter("bindPokemons")
+        fun RecyclerView.bindPokemons(pokemons: PagedList<PokemonResponse>?) {
+            (adapter as PokemonsAdapter).submitList(pokemons)
+        }
+
+        @JvmStatic
+        @BindingAdapter("bindImageUrl")
+        fun bindImageUrl(view: ImageView, url: String) {
+            Picasso.get().load(url).into(view)
         }
     }
 }
