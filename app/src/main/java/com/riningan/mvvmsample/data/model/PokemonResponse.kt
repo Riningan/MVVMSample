@@ -1,7 +1,7 @@
-package com.riningan.mvvmsample.data
+package com.riningan.mvvmsample.data.model
 
 
-class PokemonModel(
+class PokemonResponse(
     val abilities: List<Ability>,
     val base_experience: Int,
     val forms: List<Form>,
