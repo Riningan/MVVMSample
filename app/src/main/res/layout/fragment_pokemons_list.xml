@@ -5,11 +5,9 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="viewModel"
-            type="com.riningan.mvvmsample.presentation.PokemonsListViewModel" />
+            type="com.riningan.mvvmsample.presentation.pokemons_list.PokemonsListViewModel" />
     </data>
 
     <LinearLayout

@@ -1,4 +1,4 @@
-package com.riningan.mvvmsample.presentation
+package com.riningan.mvvmsample.presentation.pokemons_list
 
 import android.content.Context
 import android.os.Bundle

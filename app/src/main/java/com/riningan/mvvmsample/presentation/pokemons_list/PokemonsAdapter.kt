@@ -1,4 +1,4 @@
-package com.riningan.mvvmsample.presentation
+package com.riningan.mvvmsample.presentation.pokemons_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -44,7 +44,10 @@ class PokemonsAdapter(private val mListener: ItemClickListener, pokemonsDiffUtil
         @JvmStatic
         @BindingAdapter("bindListener")
         fun RecyclerView.bindListener(clickListener: ItemClickListener) {
-            adapter = PokemonsAdapter(clickListener, PokemonsDiffUtilCallback())
+            adapter = PokemonsAdapter(
+                clickListener,
+                PokemonsDiffUtilCallback()
+            )
         }
 
         @JvmStatic

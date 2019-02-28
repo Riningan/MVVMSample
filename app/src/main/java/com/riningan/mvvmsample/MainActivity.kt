@@ -2,7 +2,7 @@ package com.riningan.mvvmsample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.riningan.mvvmsample.presentation.PokemonsListFragment
+import com.riningan.mvvmsample.presentation.pokemons_list.PokemonsListFragment
 
 
 class MainActivity : AppCompatActivity() {

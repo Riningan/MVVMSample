@@ -1,4 +1,4 @@
-package com.riningan.mvvmsample.presentation
+package com.riningan.mvvmsample.presentation.pokemons_list
 
 import androidx.recyclerview.widget.DiffUtil
 import com.riningan.mvvmsample.data.model.PokemonResponse

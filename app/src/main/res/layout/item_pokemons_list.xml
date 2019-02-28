@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.riningan.mvvmsample.presentation.PokemonsAdapter.ItemClickListener" />
+            type="com.riningan.mvvmsample.presentation.pokemons_list.PokemonsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
