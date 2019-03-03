@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
-            type="com.riningan.mvvmsample.presentation.pokemons_list.PokemonsListViewModel" />
+            type="com.riningan.mvvmsample.presentation.details.DetailsViewModel" />
     </data>
 
     <LinearLayout
@@ -20,22 +21,23 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tlbPokemonsList"
+                android:id="@+id/tlbPokemonDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_back"
+                app:onNavigationClick="@{viewModel.backClickListener}"
                 app:title="@string/app_name" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPokemonsList"
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:bindListener="@{viewModel.clickListener}"
-            app:bindPokemons="@{viewModel.pokemons}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_pokemons_list" />
+            android:layout_height="wrap_content"
+            android:id="@+id/ivDetails"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            app:pokemon="@{viewModel.pokemon}"/>
+
 
     </LinearLayout>
-
 </layout>

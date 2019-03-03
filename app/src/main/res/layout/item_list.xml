@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.riningan.mvvmsample.presentation.pokemons_list.PokemonsAdapter" />
+            type="com.riningan.mvvmsample.presentation.list.PokemonsAdapter.ItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
             android:layout_marginLeft="14dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            app:bindImageUrl="@{pokemon.sprites.back_default}"
+            app:imageUrl="@{pokemon.sprites.front_default}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

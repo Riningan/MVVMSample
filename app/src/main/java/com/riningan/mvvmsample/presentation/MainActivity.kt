@@ -2,27 +2,19 @@ package com.riningan.mvvmsample.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.riningan.mvvmsample.R
-import com.riningan.mvvmsample.presentation.pokemons_list.PokemonsListFragment
+import com.riningan.mvvmsample.app.App
 
 
 class MainActivity : AppCompatActivity() {
-    var navController: NavController? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navController = Navigation.findNavController(this, R.id.navHostFragment)
+        App.createActivityComponent(this)
     }
 
-    override fun onStart() {
-        super.onStart()
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction
-                .add(android.R.id.content, PokemonsListFragment())
-                .commit()
+    override fun onDestroy() {
+        super.onDestroy()
+        App.clearActivityComponent()
     }
 }

@@ -6,15 +6,15 @@
 
     <fragment
         android:id="@+id/pokemonsListFragment"
-        android:name="com.riningan.mvvmsample.presentation.pokemons_list.PokemonsListFragment"
+        android:name="com.riningan.mvvmsample.presentation.list.ListFragment"
         android:label="PokemonsListFragment">
         <action
-            android:id="@+id/action_pokemonsListFragment_to_pokemonDetailsFragment"
+            android:id="@+id/action_to_details"
             app:destination="@id/pokemonDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailsFragment"
-        android:name="com.riningan.mvvmsample.presentation.pokemon_details.PokemonDetailsFragment"
+        android:name="com.riningan.mvvmsample.presentation.details.DetailsFragment"
         android:label="PokemonDetailsFragment">
         <argument
             android:name="pokemonName"

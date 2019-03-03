@@ -1,4 +1,4 @@
-package com.riningan.mvvmsample.presentation.pokemons_list
+package com.riningan.mvvmsample.presentation.list
 
 import androidx.paging.DataSource
 import com.riningan.mvvmsample.data.model.PokemonResponse

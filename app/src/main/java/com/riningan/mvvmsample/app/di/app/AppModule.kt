@@ -1,4 +1,4 @@
-package com.riningan.mvvmsample.app.di
+package com.riningan.mvvmsample.app.di.app
 
 import android.content.Context
 import dagger.Module
@@ -10,7 +10,5 @@ import javax.inject.Singleton
 class AppModule(private val mContext: Context) {
     @Provides
     @Singleton
-    fun provideContext(): Context {
-        return mContext
-    }
+    fun context(): Context = mContext
 }

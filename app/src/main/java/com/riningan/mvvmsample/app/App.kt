@@ -1,26 +1,38 @@
 package com.riningan.mvvmsample.app
 
+import android.app.Activity
 import android.app.Application
-import com.riningan.mvvmsample.app.di.AppComponent
-import com.riningan.mvvmsample.app.di.AppModule
-import com.riningan.mvvmsample.app.di.DaggerAppComponent
+import com.riningan.mvvmsample.app.di.activity.ActivityComponent
+import com.riningan.mvvmsample.app.di.activity.NavigationModule
+import com.riningan.mvvmsample.app.di.app.AppComponent
+import com.riningan.mvvmsample.app.di.app.AppModule
+import com.riningan.mvvmsample.app.di.app.DaggerAppComponent
 
 
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
         mAppComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(applicationContext))
-            .build()
+                .appModule(AppModule(applicationContext))
+                .build()
     }
 
 
     companion object {
         private lateinit var mAppComponent: AppComponent
+        private var mActivityComponent: ActivityComponent? = null
 
 
-        fun getAppComponent(): AppComponent {
-            return mAppComponent
+        fun createActivityComponent(activity: Activity) {
+            if (mActivityComponent == null) {
+                mActivityComponent = mAppComponent.addActivityComponent(NavigationModule(activity))
+            }
+        }
+
+        fun getActivityComponent(): ActivityComponent = mActivityComponent!!
+
+        fun clearActivityComponent() {
+            mActivityComponent = null
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.riningan.mvvmsample.app.di
+package com.riningan.mvvmsample.app.di.app
 
 import androidx.annotation.NonNull
 import com.riningan.mvvmsample.data.network.PokeClient
