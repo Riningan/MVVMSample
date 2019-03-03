@@ -35,9 +35,6 @@ class DetailsFragment : Fragment() {
                     backClick.observe(this@DetailsFragment, Observer {
                         navController.popBackStack()
                     })
-                    pokemon.observe(this@DetailsFragment, Observer {
-                        tlbPokemonDetails.title = it.name
-                    })
                     val args = DetailsFragmentArgs.fromBundle(arguments!!)
                     start(args.pokemonName)
                 }

@@ -4,8 +4,6 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="viewModel"
             type="com.riningan.mvvmsample.presentation.details.DetailsViewModel" />
@@ -21,23 +19,38 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tlbPokemonDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:navigationIcon="@drawable/ic_back"
                 app:onNavigationClick="@{viewModel.backClickListener}"
-                app:title="@string/app_name" />
+                app:title='@{viewModel.pokemon == null ? "" : viewModel.pokemon.name}' />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ivDetails"
-            android:scaleType="centerInside"
-            android:adjustViewBounds="true"
-            app:pokemon="@{viewModel.pokemon}"/>
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    app:pokemon="@{viewModel.pokemon}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.pokemon == null ? "" : viewModel.pokemon.toString()}' />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 </layout>
