@@ -13,17 +13,17 @@ class PokeClient {
 
     init {
         val okHttpClient = OkHttpClient().newBuilder()
-            .readTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
-            .connectTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
-            .build()
+                .readTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
+                .connectTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
+                .build()
 
         mApi = Retrofit.Builder()
-            .baseUrl(URL)
-            .client(okHttpClient)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(PokeApi::class.java)
+                .baseUrl(URL)
+                .client(okHttpClient)
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(PokeApi::class.java)
     }
 
 
@@ -32,6 +32,6 @@ class PokeClient {
 
     companion object {
         private const val TIMEOUT = 30000L
-        private const val URL = "https://pokeapi.co/api/v2/"
+        var URL = "https://pokeapi.co/api/v2/"
     }
 }
