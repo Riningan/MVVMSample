@@ -1,6 +1,5 @@
 package com.riningan.mvvmsample
 
-import com.riningan.mvvmsample.data.model.Ability
 import com.riningan.mvvmsample.data.model.PokemonResponse
 import com.riningan.mvvmsample.data.model.PokemonsResponse
 import com.riningan.mvvmsample.data.model.Result
@@ -9,7 +8,7 @@ import com.riningan.mvvmsample.data.model.Sprites
 
 
 val pokemonResponse1 = PokemonResponse(
-        listOf<Ability>(),
+        listOf(),
         0,
         listOf(),
         listOf(),
@@ -28,7 +27,7 @@ val pokemonResponse1 = PokemonResponse(
         0)
 
 val pokemonResponse2 = PokemonResponse(
-        listOf<Ability>(),
+        listOf(),
         0,
         listOf(),
         listOf(),
@@ -47,7 +46,7 @@ val pokemonResponse2 = PokemonResponse(
         0)
 
 val pokemonResponse3 = PokemonResponse(
-        listOf<Ability>(),
+        listOf(),
         0,
         listOf(),
         listOf(),
@@ -66,7 +65,7 @@ val pokemonResponse3 = PokemonResponse(
         0)
 
 val pokemonResponse4 = PokemonResponse(
-        listOf<Ability>(),
+        listOf(),
         0,
         listOf(),
         listOf(),

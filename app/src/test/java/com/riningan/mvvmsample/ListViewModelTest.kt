@@ -39,16 +39,16 @@ class ListViewModelTest {
         Dispatchers.setMain(mMainThreadSurrogate)
         mMockPokemonRepository = mock {
             onBlocking { getPokemons(0, 10) } doReturn listOf(
-                pokemonResponse1,
-                pokemonResponse2,
-                pokemonResponse3,
-                pokemonResponse4,
-                pokemonResponse1,
-                pokemonResponse2,
-                pokemonResponse3,
-                pokemonResponse4,
-                pokemonResponse1,
-                pokemonResponse2
+                    pokemonResponse1,
+                    pokemonResponse2,
+                    pokemonResponse3,
+                    pokemonResponse4,
+                    pokemonResponse1,
+                    pokemonResponse2,
+                    pokemonResponse3,
+                    pokemonResponse4,
+                    pokemonResponse1,
+                    pokemonResponse2
             )
         }
         mListViewModel = ListViewModel(mMockPokemonRepository)
@@ -65,10 +65,10 @@ class ListViewModelTest {
     fun getPokemons() {
         mListViewModel.pokemons.observeForever {
             await().atMost(5, TimeUnit.SECONDS)
-                .ignoreExceptions()
-                .untilAsserted {
-                    assertEquals(it.size, 10)
-                }
+                    .ignoreExceptions()
+                    .untilAsserted {
+                        assertEquals(it.size, 10)
+                    }
             assertEquals(it[0], pokemonResponse1)
             assertEquals(it[1], pokemonResponse2)
             assertEquals(it[2], pokemonResponse3)
