@@ -5,7 +5,7 @@ import com.riningan.mvvmsample.data.network.PokeApi
 
 
 class PokemonRepositoryImpl(private val mPokeApi: PokeApi) : PokemonRepository {
-    override suspend fun getPokemon(offset: Int, limit: Int): List<PokemonResponse> =
+    override suspend fun getPokemons(offset: Int, limit: Int): List<PokemonResponse> =
             mPokeApi.getPokemons(offset, limit)
                     .await()
                     .results.map { getPokemon(it.name) }

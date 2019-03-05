@@ -12,7 +12,7 @@ class PokemonsDataSource(private val mPokemonRepository: PokemonRepository) : Po
     override fun loadInitial(params: LoadInitialParams, callback: LoadInitialCallback<PokemonResponse>) {
         CoroutineScope(Dispatchers.Main).launch {
             val result = try {
-                mPokemonRepository.getPokemon(0, 10)
+                mPokemonRepository.getPokemons(0, 10)
             } catch (e: Exception) {
                 listOf<PokemonResponse>()
             }
@@ -23,7 +23,7 @@ class PokemonsDataSource(private val mPokemonRepository: PokemonRepository) : Po
     override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<PokemonResponse>) {
         CoroutineScope(Dispatchers.Main).launch {
             val result = try {
-                mPokemonRepository.getPokemon(params.startPosition, params.loadSize)
+                mPokemonRepository.getPokemons(params.startPosition, params.loadSize)
             } catch (e: Exception) {
                 listOf<PokemonResponse>()
             }

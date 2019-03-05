@@ -13,10 +13,12 @@ import com.riningan.mvvmsample.utils.SingleLiveEvent
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
 class DetailsViewModel(private val mPokemonRepository: PokemonRepository) : ViewModel() {
+    private var mJob: Job? = null
     val pokemon = MutableLiveData<PokemonResponse>()
     val backClickListener = ObservableField<View.OnClickListener>()
     val backClick = SingleLiveEvent<Boolean>()
@@ -27,8 +29,14 @@ class DetailsViewModel(private val mPokemonRepository: PokemonRepository) : View
     }
 
 
+    override fun onCleared() {
+        super.onCleared()
+        mJob?.cancel()
+    }
+
+
     fun start(name: String) {
-        CoroutineScope(Dispatchers.Main).launch {
+        mJob = CoroutineScope(Dispatchers.Main).launch {
             pokemon.value = mPokemonRepository.getPokemon(name)
         }
     }
